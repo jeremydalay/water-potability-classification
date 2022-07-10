@@ -1,6 +1,12 @@
 import streamlit as st
 import pandas as pd
 
+from ui_files.ui import (
+    get_features, 
+    get_random_state, 
+    get_test_size
+)
+
 # Setup page
 st.set_page_config(
     page_title = "Water Potability Classifier",
@@ -13,46 +19,34 @@ def sidebar():
 
     # Configure dataset
     st.sidebar.title("Configure Dataset")
-    # st.sidebar.markdown("---")
-
-    test_size = st.sidebar.slider(
-        "Set Test Size",
-        min_value = 0.10,
-        max_value = 0.50,
-        step = 0.10,
-        value = 0.30
-    )
-    random_state = st.sidebar.number_input(
-        "Set Random State",
-        min_value = 0,
-        max_value = 42,
-        value = 40
-    )
+    test_size = get_test_size()
+    random_state = get_random_state()
     
     # Set Features
     st.sidebar.title("Set Features")
-    features = list(data.columns.drop(data.columns[-1]))
-    input = []
-    
-    for feat in features:
-        with st.sidebar.expander(feat, False):
-            input.append(
-                st.number_input("Set " + feat)
-            )
+    input = get_features(data)
     
     if st.sidebar.button('Predict'):
-        pass
+        return [test_size, random_state, input]
 
     st.sidebar.markdown("---")
+    return [test_size, random_state]
 
 
-def body():
+def body(user_input):
 
     # Title
     st.title("Water Potability Classifier")
     st.markdown("---")
 
+    # Prediction
+    # Graph
+    # Accuracy
+
+    # Data Analysis
+    
+
 
 if __name__ == "__main__":
-    sidebar()
-    body()
+    user_input = sidebar()
+    body(user_input)
