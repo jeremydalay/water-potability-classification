@@ -3,7 +3,9 @@ import numpy as np
 
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix,accuracy_score
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 def ph(x):
     if x<6.5:
@@ -71,7 +73,37 @@ def pred(par):
     for i in range(len(par)):
         vals += [cond[i](par[i])]
     ans = NB.predict([vals])
-    return ans
+
+    if(ans == 1):
+        p = 'Potable'
+    else:
+        p = 'Not Potable'
+
+    new_row = {'ph':par[0],'Hardness':par[1],'Solids':par[2],'Chloramines':par[3],'Sulfate':par[4],'Conductivity':par[5],'Organic_carbon':par[6],'Trihalomethanes':par[7],'Turbidity':par[8],'Prediction':p}
+    
+    df = pd.read_csv('trial_logs.csv')
+    df = df.append(new_row, ignore_index=True)
+    df.to_csv('trial_logs.csv')
+
+    return p
+
+def show_cofusion():
+    cm = confusion_matrix(y_valid, y_pred)
+    sns.heatmap(cm, annot=True, fmt='d', cmap=colors)
+
+def show_corr():
+    plt.figure(figsize=(12,8))
+    corr_matrix = dataset.corr()
+    sns.heatmap(corr_matrix, annot=True, cmap=colors)
+
+def show_pot_count():
+    plt.figure(figsize=(12,8))
+    plt.title('Potability Count')
+    sns.set_style('dark')
+    sns.countplot(dataset['Potability'], palette=colors[5:7]) 
+
+
+colors= sns.color_palette("mako", 10)
 
 dataset = pd.read_csv('..\dataset\water_potability_final.csv')
 
