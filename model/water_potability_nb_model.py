@@ -120,6 +120,6 @@ X = data
 
 X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size = 0.30, random_state= 41)
 NB = GaussianNB()
-NB.fit(X_train, y_train)
-y_pred = NB.predict(X_valid)
+NB.fit(X_train.values, y_train.values)
+y_pred = NB.predict(X_valid.values)
 acc = round(accuracy_score(y_valid, y_pred), 4)
