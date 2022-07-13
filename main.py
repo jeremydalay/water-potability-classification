@@ -27,10 +27,10 @@ def sidebar():
     input = get_features(data)
     
     if st.sidebar.button('Predict'):
-        return [test_size, random_state, input]
+        return [data, test_size, random_state, input]
 
     st.sidebar.markdown("---")
-    return [test_size, random_state]
+    return [data, test_size, random_state]
 
 
 def body(user_input):
@@ -40,10 +40,7 @@ def body(user_input):
     st.markdown("---")
 
     # Prediction
-    # Graph
-    # Accuracy
-
-    # Data Analysis
+    pred, acc = naive_bayes_model(user_input)
     
 
 

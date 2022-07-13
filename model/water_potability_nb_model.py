@@ -105,7 +105,7 @@ def show_pot_count():
 
 colors= sns.color_palette("mako", 10)
 
-dataset = pd.read_csv('..\dataset\water_potability_final.csv')
+dataset = pd.read_csv('.\dataset\water_potability_final.csv')
 
 X = dataset.drop(['Potability'], axis=1)
 y = dataset['Potability']
