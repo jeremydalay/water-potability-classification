@@ -83,9 +83,9 @@ def pred(par, NB):
 
     new_row = {'ph':par[0],'Hardness':par[1],'Solids':par[2],'Chloramines':par[3],'Sulfate':par[4],'Conductivity':par[5],'Organic_carbon':par[6],'Trihalomethanes':par[7],'Turbidity':par[8],'Prediction':p}
     
-    # df = pd.read_csv('trial_logs.csv')
+    # df = pd.read_csv('.\model\trial_logs.csv')
     # df = df.append(new_row, ignore_index=True)
-    # df.to_csv('trial_logs.csv')
+    # df.to_csv('.\model\trial_logs.csv')
 
     return p
 
@@ -105,11 +105,9 @@ def show_pot_count():
     sns.countplot(dataset['Potability'], palette=colors[5:7])
 
 # Naive Bayes model
-def naive_bayes_model(input):    # dataset, test_size, random
-    dataset = input[0]
-    test_size = input[1]
-    random = input[2]
-    par = input[3]
+def naive_bayes_model(dataset, input):    # dataset, test_size, random
+    test_size = input[0]
+    random = input[1]
 
     X = dataset.drop(['Potability'], axis=1)
     y = dataset['Potability']
@@ -127,6 +125,7 @@ def naive_bayes_model(input):    # dataset, test_size, random
     NB.fit(X_train.values, y_train.values)
     y_pred = NB.predict(X_valid.values)
     acc = round(accuracy_score(y_valid, y_pred), 4)
+    cm = confusion_matrix(y_valid, y_pred)
 
     # Predict the given attributes
-    return pred(par, NB), acc
+    return NB, acc, cm
