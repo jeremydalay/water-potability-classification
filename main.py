@@ -7,6 +7,8 @@ from ui_files.ui import (
     get_test_size
 )
 
+from model.NaiveBayes import naive_bayes_model
+
 # Setup page
 st.set_page_config(
     page_title = "Water Potability Classifier",
@@ -15,7 +17,7 @@ st.set_page_config(
 
 # Sidebar
 def sidebar():
-    data = pd.read_csv("dataset\water_potability.csv")
+    data = pd.read_csv("dataset\water_potability_final.csv")
 
     # Configure dataset
     st.sidebar.title("Configure Dataset")
@@ -40,7 +42,8 @@ def body(user_input):
     st.markdown("---")
 
     # Prediction
-    pred, acc = naive_bayes_model(user_input)
+    if len(user_input) == 4:
+        pred, acc = naive_bayes_model(user_input)
     
 
 

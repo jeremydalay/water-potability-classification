@@ -69,7 +69,7 @@ def tbty(x):
         return 1
 
 # Prediction
-def pred(par):
+def pred(par, NB):
     cond = [ph,hard,tds, chlr, slft, cdty, crbn, thts, tbty]
     vals = []
     for i in range(len(par)):
@@ -83,9 +83,9 @@ def pred(par):
 
     new_row = {'ph':par[0],'Hardness':par[1],'Solids':par[2],'Chloramines':par[3],'Sulfate':par[4],'Conductivity':par[5],'Organic_carbon':par[6],'Trihalomethanes':par[7],'Turbidity':par[8],'Prediction':p}
     
-    df = pd.read_csv('trial_logs.csv')
-    df = df.append(new_row, ignore_index=True)
-    df.to_csv('trial_logs.csv')
+    # df = pd.read_csv('trial_logs.csv')
+    # df = df.append(new_row, ignore_index=True)
+    # df.to_csv('trial_logs.csv')
 
     return p
 
@@ -104,12 +104,12 @@ def show_pot_count():
     sns.set_style('dark')
     sns.countplot(dataset['Potability'], palette=colors[5:7])
 
-
+# Naive Bayes model
 def naive_bayes_model(input):    # dataset, test_size, random
     dataset = input[0]
     test_size = input[1]
     random = input[2]
-    
+    par = input[3]
 
     X = dataset.drop(['Potability'], axis=1)
     y = dataset['Potability']
@@ -128,4 +128,5 @@ def naive_bayes_model(input):    # dataset, test_size, random
     y_pred = NB.predict(X_valid.values)
     acc = round(accuracy_score(y_valid, y_pred), 4)
 
-    return y_pred, acc
+    # Predict the given attributes
+    return pred(par, NB), acc
