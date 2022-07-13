@@ -70,18 +70,29 @@ def body(user_input):
 
     col1, col2 = st.columns((1, 4))
     with col1:
-        st.metric("Accuracy", str(acc*100)+"%", str(format(100-acc*100, '.2f'))+"%")
+        st.metric(
+            "Accuracy", str(format(acc*100, '.2f'))+"%", 
+            str(format(100-acc*100, '.2f'))+"%"
+        )
     with col2:
+        st.write('Simulation')
+        
         if len(user_input) == 3:
             ans = pred(user_input[-1], NB)
-            st.write('Simulation')
-            df = pd.DataFrame(
-                np.array(user_input[-1]).reshape(-1, len(user_input[-1])),
+            input = user_input[-1]
+            
+        else:
+            ans = ""
+            input = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        
+        df = pd.DataFrame(
+                np.array(input).reshape(-1, len(input)),
                 columns=data.columns.drop("Potability")
-                )
-            df.index = ["Value"]
-            st.write(df)
-            st.subheader("Prediction: "+ans)
+        ) 
+        df.index = ["Value"]
+        st.write(df)
+        st.subheader("Prediction: "+ans)
+            
     
     # st.markdown("---")
 
