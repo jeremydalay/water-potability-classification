@@ -70,7 +70,7 @@ def body(user_input):
 
     col1, col2 = st.columns((1, 4))
     with col1:
-        st.metric("Accuracy", str(acc*100)+"%", str(100-acc*100)+"%")
+        st.metric("Accuracy", str(acc*100)+"%", str(format(100-acc*100, '.2f'))+"%")
     with col2:
         if len(user_input) == 3:
             ans = pred(user_input[-1], NB)
