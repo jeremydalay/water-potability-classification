@@ -2,7 +2,6 @@ from turtle import color
 import streamlit as st
 import pandas as pd
 import numpy as np
-from pathlib import Path
 from ui_files.ui import (
     get_features, 
     get_random_state, 
@@ -21,8 +20,8 @@ st.set_page_config(
     page_title = "Water Potability Classifier",
     layout = "wide"
 )
-final_dataset = Path(__file__).parents[1] / 'dataset/water_potability_final.csv'
-data = pd.read_csv(final_dataset)
+
+data = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/dataset/water_potability_final.csv')
 
 # Sidebar
 def sidebar():
@@ -97,8 +96,7 @@ def body(user_input):
     
 
     # Show Trial Logs
-    logs = Path(__file__).parents[1] /'model/trial_logs.csv'
-    log = pd.read_csv(logs)
+    log = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv')
     log = log.iloc[: , 1:]
     st.text('Trial Logs')
     st.write(log)
