@@ -48,9 +48,9 @@ def body(user_input):
     st.markdown("---")
 
     # Data Analysis
-    
-    st.write(data.describe())
     st.subheader('Data Analysis')
+    st.write(data.describe())
+    
     # Correlation Matrix in Content
     st.subheader('Correlation between features')
     fig_corr = plot_corr_feat(data.corr())
