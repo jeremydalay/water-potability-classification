@@ -22,7 +22,7 @@ st.set_page_config(
 )
 
 data = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/dataset/water_potability_final.csv?raw=true',lineterminator='\n')
-
+log = pd.DataFrame(columns = data.columns.values[:-1])
 
 # Sidebar
 def sidebar():
@@ -43,7 +43,6 @@ def sidebar():
 
 
 def body(user_input):
-    log = pd.DataFrame(columns = data.columns.values[:-1])
     # Title
     st.title("Water Potability Classifier")
     st.markdown("---")
