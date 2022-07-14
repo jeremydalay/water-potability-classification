@@ -2,8 +2,6 @@ from turtle import color
 import streamlit as st
 import pandas as pd
 import numpy as np
-import firebase_admin
-from firebase_admin import credentials
 from ui_files.ui import (
     get_features, 
     get_random_state, 
@@ -24,10 +22,6 @@ st.set_page_config(
 )
 
 data = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/dataset/water_potability_final.csv?raw=true',lineterminator='\n')
-
-cred = credentials.Certificate("https://github.com/jeremydalay/water-potability-classification/blob/main/data-logs-f460d-firebase-adminsdk-wf2z1-4ddd95bf0f.json?raw=true")
-firebase_admin.initialize_app(cred)
-
 
 # Sidebar
 def sidebar():
