@@ -104,4 +104,4 @@ def body(user_input):
 
 if __name__ == "__main__":
     user_input = sidebar()
-    body(user_input)
+    body(user_input,log)
