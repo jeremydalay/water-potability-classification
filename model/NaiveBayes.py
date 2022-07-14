@@ -66,7 +66,7 @@ def tbty(x):
         return 1
 
 # Prediction
-def pred(par, NB):
+def pred(par, NB,log):
     cond = [ph,hard,tds, chlr, slft, cdty, crbn, thts, tbty]
     vals = []
     for i in range(len(par)):
@@ -79,13 +79,10 @@ def pred(par, NB):
         p = 'Not Potable'
 
     new_row = {'ph':par[0],'Hardness':par[1],'Solids':par[2],'Chloramines':par[3],'Sulfate':par[4],'Conductivity':par[5],'Organic_carbon':par[6],'Trihalomethanes':par[7],'Turbidity':par[8],'Prediction':p}
-    
-    df = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv?raw=true',lineterminator='\n')
-    df = df.iloc[: , 1:]
-    df = df.append(new_row, ignore_index=True)
-    df.to_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv?raw=true')
 
-    return p
+    df = df.append(new_row, ignore_index=True)
+
+    return p,log
 
 '''def show_cofusion():
     cm = confusion_matrix(y_valid, y_pred)
