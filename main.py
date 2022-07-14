@@ -43,7 +43,7 @@ def sidebar():
 
 
 def body(user_input):
-    log = pd.DataFrame(columns = data.columns.values)
+    log = pd.DataFrame(columns = data.columns.values[:-1])
     # Title
     st.title("Water Potability Classifier")
     st.markdown("---")
