@@ -49,7 +49,7 @@ def body(user_input):
     st.markdown("---")
 
     # Data Analysis
-    st.subheader('Data Analysis')
+    st.subheader("A machine learning model that predicts water potability using Naive Bayes Algorithm.")
     st.write(data.describe())
     
     # Correlation Matrix in Content
