@@ -22,7 +22,7 @@ st.set_page_config(
     layout = "wide"
 )
 
-data = pd.read_csv("dataset\water_potability_final.csv")
+data = pd.read_csv(r"dataset\water_potability_final.csv")
 
 # Sidebar
 def sidebar():
