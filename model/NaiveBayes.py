@@ -66,7 +66,7 @@ def tbty(x):
         return 1
 
 # Prediction
-def pred(par, NB,log):
+def pred(par, NB):
     cond = [ph,hard,tds, chlr, slft, cdty, crbn, thts, tbty]
     vals = []
     for i in range(len(par)):
