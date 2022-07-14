@@ -22,7 +22,7 @@ st.set_page_config(
     layout = "wide"
 )
 
-data = pd.read_csv(r"dataset\water_potability_final.csv")
+data = pd.read_csv("/dataset/water_potability_final.csv")
 
 # Sidebar
 def sidebar():
@@ -97,7 +97,7 @@ def body(user_input):
     
 
     # Show Trial Logs
-    log = pd.read_csv(r"model\trial_logs.csv")
+    log = pd.read_csv(r"/model/trial_logs.csv")
     log = log.iloc[: , 1:]
     st.text('Trial Logs')
     st.write(log)
