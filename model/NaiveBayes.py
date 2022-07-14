@@ -83,7 +83,7 @@ def pred(par, NB):
     df = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv?raw=true',lineterminator='\n')
     df = df.iloc[: , 1:]
     df = df.append(new_row, ignore_index=True)
-    df.to_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv?raw=true',lineterminator='\n')
+    df.to_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv?raw=true')
 
     return p
 
