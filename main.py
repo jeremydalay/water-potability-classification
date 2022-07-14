@@ -75,12 +75,13 @@ def body(user_input):
         st.write('Simulation')
         
         if len(user_input) == 3:
-            ans,logs = pred(user_input[-1], NB,log)
+            ans,log = pred(user_input[-1], NB,log)
             input = user_input[-1]
             
         else:
             ans = ""
             input = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+            log = log
         
         df = pd.DataFrame(
                 np.array(input).reshape(-1, len(input)),
@@ -99,7 +100,7 @@ def body(user_input):
     # Show Trial Logs
     #log = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv?raw=true',lineterminator='\n')
     #log = log.iloc[: , 1:]
-    log = logs
+    
     st.text('Trial Logs')
     st.write(log)
 
