@@ -100,9 +100,9 @@ def body(user_input):
     
 
     # Show Trial Logs
-    # log = pd.read_csv("model\trial_logs.csv")
-    # st.text('Trial Logs')
-    # st.write(log)
+    log = pd.read_csv(r"model\trial_logs.csv")
+    st.text('Trial Logs')
+    st.write(log)
 
 
 if __name__ == "__main__":
