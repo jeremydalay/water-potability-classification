@@ -1,3 +1,4 @@
 plotly
 inflect
 sklearn
+firebase admin
