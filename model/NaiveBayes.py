@@ -89,16 +89,16 @@ def pred(par, NB):
 
     return p
 
-def show_cofusion():
+def show_cofusion(y_valid,y_pred,colors):
     cm = confusion_matrix(y_valid, y_pred)
     sns.heatmap(cm, annot=True, fmt='d', cmap=colors)
 
-def show_corr():
+def show_corr(dataset,colors):
     plt.figure(figsize=(12,8))
     corr_matrix = dataset.corr()
     sns.heatmap(corr_matrix, annot=True, cmap=colors)
 
-def show_pot_count():
+def show_pot_count(dataset,colors):
     plt.figure(figsize=(12,8))
     plt.title('Potability Count')
     sns.set_style('dark')

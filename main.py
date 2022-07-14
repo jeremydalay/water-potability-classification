@@ -104,6 +104,9 @@ def body(user_input):
     st.text('Trial Logs')
     st.write(log)
 
+modules = dir()
+
+print(modules)
 
 if __name__ == "__main__":
     user_input = sidebar()
