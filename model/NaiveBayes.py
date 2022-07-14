@@ -80,7 +80,7 @@ def pred(par, NB,log):
 
     new_row = {'ph':par[0],'Hardness':par[1],'Solids':par[2],'Chloramines':par[3],'Sulfate':par[4],'Conductivity':par[5],'Organic_carbon':par[6],'Trihalomethanes':par[7],'Turbidity':par[8],'Prediction':p}
 
-    df = df.append(new_row, ignore_index=True)
+    log = log.append(new_row, ignore_index=True)
 
     return p,log
 
