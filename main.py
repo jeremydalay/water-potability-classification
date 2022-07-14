@@ -21,7 +21,7 @@ st.set_page_config(
     layout = "wide"
 )
 
-data = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/dataset/water_potability_final.csv')
+data = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/dataset/water_potability_final.csv',lineterminator='\n')
 
 # Sidebar
 def sidebar():
@@ -96,7 +96,7 @@ def body(user_input):
     
 
     # Show Trial Logs
-    log = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv')
+    log = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv',lineterminator='\n')
     log = log.iloc[: , 1:]
     st.text('Trial Logs')
     st.write(log)
