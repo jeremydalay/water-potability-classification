@@ -44,12 +44,13 @@ def sidebar():
 def body(user_input):
     # Title
     st.title("Water Potability Classifier")
+    st.subheader("A machine learning model that predicts water potability using Naive Bayes Algorithm.")
     st.markdown("---")
 
     # Data Analysis
-    st.subheader("A machine learning model that predicts water potability using Naive Bayes Algorithm.")
-    st.write(data.describe())
     
+    st.write(data.describe())
+    st.subheader('Data Analysis')
     # Correlation Matrix in Content
     st.subheader('Correlation between features')
     fig_corr = plot_corr_feat(data.corr())
