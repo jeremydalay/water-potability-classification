@@ -101,6 +101,7 @@ def body(user_input):
 
     # Show Trial Logs
     log = pd.read_csv(r"model\trial_logs.csv")
+    log = log.iloc[: , 1:]
     st.text('Trial Logs')
     st.write(log)
 

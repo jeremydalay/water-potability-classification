@@ -83,13 +83,14 @@ def pred(par, NB):
 
     new_row = {'ph':par[0],'Hardness':par[1],'Solids':par[2],'Chloramines':par[3],'Sulfate':par[4],'Conductivity':par[5],'Organic_carbon':par[6],'Trihalomethanes':par[7],'Turbidity':par[8],'Prediction':p}
     
-    # df = pd.read_csv('.\model\trial_logs.csv')
-    # df = df.append(new_row, ignore_index=True)
-    # df.to_csv('.\model\trial_logs.csv')
+    df = pd.read_csv(r'.\model\trial_logs.csv')
+    df = df.iloc[: , 1:]
+    df = df.append(new_row, ignore_index=True)
+    df.to_csv(r'.\model\trial_logs.csv')
 
     return p
 
-def show_cofusion():
+'''def show_cofusion():
     cm = confusion_matrix(y_valid, y_pred)
     sns.heatmap(cm, annot=True, fmt='d', cmap=colors)
 
@@ -102,7 +103,7 @@ def show_pot_count():
     plt.figure(figsize=(12,8))
     plt.title('Potability Count')
     sns.set_style('dark')
-    sns.countplot(dataset['Potability'], palette=colors[5:7])
+    sns.countplot(dataset['Potability'], palette=colors[5:7])'''
 
 # Naive Bayes model
 def naive_bayes_model(dataset, input):    # dataset, test_size, random
