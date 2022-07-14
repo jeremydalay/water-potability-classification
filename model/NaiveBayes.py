@@ -102,7 +102,7 @@ def show_pot_count():
 # Naive Bayes model
 def naive_bayes_model(dataset, input):    # dataset, test_size, random
     test_size = input[0]
-    random = input[1]
+    random = int(input[1])
 
     X = dataset.drop(['Potability'], axis=1)
     y = dataset['Potability']
