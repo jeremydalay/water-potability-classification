@@ -1,2 +1,2 @@
 libtk8.6
-matplotlib
+matplotlib3.5.2
