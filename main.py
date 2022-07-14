@@ -22,7 +22,6 @@ st.set_page_config(
 )
 
 data = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/dataset/water_potability_final.csv?raw=true',lineterminator='\n')
-log = pd.DataFrame(columns = data.columns.values[:-1])
 
 # Sidebar
 def sidebar():
@@ -74,16 +73,13 @@ def body(user_input):
         st.write('Simulation')
         
         if len(user_input) == 3:
-            ans,log = pred(user_input[-1], NB,log)
+            ans = pred(user_input[-1], NB)
             input = user_input[-1]
-            st.text('Trial Logs')
-            st.write(log)
             
         else:
             ans = ""
             input = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-            st.text('Trial Logs')
-            st.write(log)
+ 
             
         df = pd.DataFrame(
                 np.array(input).reshape(-1, len(input)),
@@ -102,7 +98,8 @@ def body(user_input):
     # Show Trial Logs
     #log = pd.read_csv('https://github.com/jeremydalay/water-potability-classification/blob/main/model/trial_logs.csv?raw=true',lineterminator='\n')
     #log = log.iloc[: , 1:]
-    
+    #st.text('Trial Logs')
+    #st.write(log)
 
 if __name__ == "__main__":
     user_input = sidebar()
