@@ -34,13 +34,16 @@ def get_features(data):
     return input
 
 def plot_corr_feat(df_corr):
+    df_corr = df_corr.round(2)
     fig_corr = go.Figure([go.Heatmap(z=df_corr.values,
                                     x=df_corr.index.values,
-                                    y=df_corr.columns.values)])
+                                    y=df_corr.columns.values,
+                                    text=df_corr.values,
+                                    texttemplate="%{text}", 
+                                    textfont={"size":12})])
     fig_corr.update_layout(height=350,
                         width=1000,
                         margin={'l': 20, 'r': 20, 't': 0, 'b': 0})
-    
     return fig_corr
 
 def plot_confusion(cm):
@@ -49,7 +52,9 @@ def plot_confusion(cm):
     fig_corr = go.Figure([go.Heatmap(z=cm.values,
                                     x=cm.index.values,
                                     y=cm.columns.values,
-                                    text=cm.values)])
+                                    text=cm.values,
+                                    texttemplate="%{text}", 
+                                    textfont={"size":14})])
     fig_corr.update_layout(height=300,
                         width=500,
                         margin={'l': 20, 'r': 20, 't': 0, 'b': 0})
