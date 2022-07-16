@@ -9,7 +9,7 @@ def get_test_size():
         "Set Test Size",
         min_value = 0.10,
         max_value = 0.50,
-        step = 0.01,
+        step = 0.001,
         value = 0.30
     )
 
