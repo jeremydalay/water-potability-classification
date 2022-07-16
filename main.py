@@ -61,34 +61,35 @@ def body(user_input):
     NB, acc, cm = naive_bayes_model(data, user_input)
     fig_corr_acc = plot_confusion(cm)
 
-    st.write('Confusion Matrix')
-    st.plotly_chart(fig_corr_acc)
-
-    col1, col2 = st.columns((1, 4))
+    col1, col2 = st.columns((4, 2))
     with col1:
+        st.write('Confusion Matrix')
+        st.plotly_chart(fig_corr_acc)
+    with col2:
+        for i in range(6):
+            st.write('')
         st.metric(
             "Accuracy", str(format(acc*100, '.2f'))+"%", 
             str(format(100-acc*100, '.2f'))+"%"
         )
-    with col2:
-        st.write('Simulation')
+    
+    st.write('Simulation')
         
-        if len(user_input) == 3:
-            ans = pred(user_input[-1], NB)
-            input = user_input[-1]
-            
-        else:
-            ans = ""
-            input = [0, 0, 0, 0, 0, 0, 0, 0, 0]
- 
-            
-        df = pd.DataFrame(
-                np.array(input).reshape(-1, len(input)),
-                columns=data.columns.drop("Potability")
-        ) 
-        df.index = ["Value"]
-        st.write(df)
-        st.subheader("Prediction: "+ans)
+    if len(user_input) == 3:
+        ans = pred(user_input[-1], NB)
+        input = user_input[-1]
+        
+    else:
+        ans = ""
+        input = [0.0000 for i in range(9)]
+
+    df = pd.DataFrame(
+            np.array(input).reshape(-1, len(input)),
+            columns=data.columns.drop("Potability")
+    )
+    df.index = ["Value"]
+    st.table(df)
+    st.subheader("Prediction: "+ans)
             
     
     # st.markdown("---")
