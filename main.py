@@ -81,7 +81,7 @@ def body(user_input):
         
     else:
         ans = ""
-        input = [0.0000 for i in range(9)]
+        input = [0.00 for i in range(9)]
 
     df = pd.DataFrame(
             np.array(input).reshape(-1, len(input)),
