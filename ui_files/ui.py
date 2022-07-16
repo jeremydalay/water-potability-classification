@@ -48,7 +48,7 @@ def plot_corr_feat(df_corr):
 
 def plot_confusion(cm):
     cm = pd.DataFrame(cm, columns=["0", "1"])
-    cm.index = ["1", "0"]
+    cm.index = ["0", "1"]
     fig_corr = go.Figure([go.Heatmap(z=cm.values,
                                     x=cm.index.values,
                                     y=cm.columns.values,
