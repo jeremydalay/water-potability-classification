@@ -88,6 +88,7 @@ def body(user_input):
             columns=data.columns.drop("Potability")
     )
     df.index = ["Value"]
+    df.round(2)
     st.table(df)
     st.subheader("Prediction: "+ans)
             
